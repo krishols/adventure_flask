@@ -1,7 +1,9 @@
+from flask import render_template
+
 from route_helper import simple_route
 
 GAME_HEADER = """
-<h1>Welcome to adventure quest!</h1>
+<h1>So you can't stop thinking about Harry Potter...</h1>
 <p>At any time you can <a href='/reset/'>reset</a> your game.</p>
 """
 
@@ -14,10 +16,7 @@ def hello(world: dict) -> str:
     :param world: The current world
     :return: The HTML to show the player
     """
-    return GAME_HEADER+"""You are in the Lair of the Corgis.<br>
-    
-    <a href="goto/lair">Go further into the lair.</a><br>
-    <a href="goto/entrance">Retreat.</a>"""
+    return render_template("index.html")
 
 
 ENCOUNTER_MONSTER = """
@@ -39,6 +38,16 @@ What is its name?
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:
+    if where == "entrance":
+        return "Congratulations! You're free!"
+    elif where == "sorting_hat":
+        return render_template("sorting_ceremony.html")
+
+@simple_route('/save/house/')
+def disclosing(world:dict, chosen_name:str):
+    return render_template("reasons_to_disclose.html")
+
+
     """
     Update the player location and encounter a monster, prompting the player
     to give them a name.
@@ -47,11 +56,9 @@ def open_door(world: dict, where: str) -> str:
     :param where: The new location to move to
     :return: The HTML to show the player
     """
-    world['location'] = where
-    return GAME_HEADER+ENCOUNTER_MONSTER.format(where)
 
 
-@simple_route("/save/name/")
+@simple_route("/save/house/")
 def save_name(world: dict, monsters_name: str) -> str:
     """
     Update the name of the monster.
@@ -62,7 +69,7 @@ def save_name(world: dict, monsters_name: str) -> str:
     """
     world['name'] = monsters_name
 
-    return GAME_HEADER+"""You are in {where}, and you are nearby {monster_name}
+    return GAME_HEADER + """You are in {where}, and you are nearby {monster_name}
     <br><br>
     <a href='/'>Return to the start</a>
     """.format(where=world['location'], monster_name=world['name'])
