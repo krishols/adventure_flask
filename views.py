@@ -35,10 +35,10 @@ def disclosing_reasons(world:dict, chosen_name:str):
 
 
 @simple_route('/disclosing/results/')
-def save_results(world:dict, *args)->str:
+def return_results(world:dict, *args)->str:
     world["reasons_to_disclose"].append(request.values.get("reason1", False))
     world["reasons_to_disclose"].append(request.values.get("reason2", False))
     world["reasons_to_disclose"].append(request.values.get("reason3", False))
-    world["reasons_to_disclose"].append(request.values.get("reason4", False))
-    return render_template("reasons_response.html", world=world)
+    world["receiving_disclosure"].append(request.values.get("person"))
 
+    return render_template("reasons_response.html", world=world)

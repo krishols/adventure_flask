@@ -14,7 +14,8 @@ from flask import request, session, redirect
 from app import app
 
 INITIAL_WORLD = {
-    "reasons_to_disclose": []
+    "reasons_to_disclose": [],
+    "receiving_disclosure": []
 }
 
 

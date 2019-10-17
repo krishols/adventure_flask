@@ -5,6 +5,39 @@
     <title>Title</title>
 </head>
 <body>
-<p> Take into consideration: {{world["reasons_to_disclose"]}}</p>
+<p> {% if world["receiving_disclosure"][0]=="Close" %}
+    {% if world["reasons_to_disclose"]==["Support", "Honesty", "Logistics"] %}
+        3
+    {% elif world["reasons_to_disclose"]==["Support", "Honesty", False] %}
+        sh
+    {% elif world["reasons_to_disclose"]==["Support", False, "Logistics"] %}
+        sl
+    {% elif world["reasons_to_disclose"]==[False, "Honesty", "Logistics"] %}
+        hl
+    {% elif world["reasons_to_disclose"]==["Support", False, False] %}
+        s
+    {% elif world["reasons_to_disclose"]==[False, "Honesty", False] %}
+        h
+    {% elif world["reasons_to_disclose"]==[False, False, "Logistics"] %}
+        l
+        {% endif %}
+    {% else %}
+       {% if world["reasons_to_disclose"]==["Support", "Honesty", "Logistics"] %}
+             3
+        {% elif world["reasons_to_disclose"]==["Support", "Honesty", False] %}
+            sh
+        {% elif world["reasons_to_disclose"]==["Support", False, "Logistics"] %}
+            sl
+        {% elif world["reasons_to_disclose"]==[False, "Honesty", "Logistics"] %}
+            hl
+        {% elif world["reasons_to_disclose"]==["Support", False, False] %}
+            s
+        {% elif world["reasons_to_disclose"]==[False, "Honesty", False] %}
+            h
+        {% elif world["reasons_to_disclose"]==[False, False, "Logistics"] %}
+            l
+        {% endif %
+    {% endif %}</p>
+
 </body>
 </html>

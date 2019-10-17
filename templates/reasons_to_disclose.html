@@ -11,8 +11,8 @@
 
 <form action="/disclosing/results">
    <h2> Who are you considering disclosing to? </h2> <select name = "person">
-            <option value="Close">Someone close to me</option>
-            <option value="NotClose">Someone not close to me</option>
+            <option name="person1" value="Close">Someone close to me</option>
+            <option name="person2" value="NotClose">Someone not close to me</option>
 
     </select>
 
@@ -23,8 +23,7 @@
 <h2> Check any of the following that you agree with. </h2>
   <input type="checkbox" name="reason1" value="Support"> I want them to support my obsession.<br>
   <input type="checkbox" name="reason2" value="Honesty"> I want to be honest about my obsession. <br>
-    <input type ="checkbox" name="reason3" value="Second Chance">My obsession previously ruined our relationship and I would like to rekindle it. <br>
-    <input type="checkbox" name="reason4" value="None">None of the above. <br>
+    <input type ="checkbox" name="reason3" value="Logistics">I feel obligated to logistically disclose this information (for work, legal purposes, etc.). <br>
     <input type="submit" value="Continue"><br>
 </form>
 
