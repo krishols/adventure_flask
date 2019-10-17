@@ -1,6 +1,8 @@
 from flask import render_template
 
 from route_helper import simple_route
+from flask import request
+from flask import jsonify
 
 GAME_HEADER = """
 <h1>So you can't stop thinking about Harry Potter...</h1>
@@ -19,22 +21,6 @@ def hello(world: dict) -> str:
     return render_template("index.html")
 
 
-ENCOUNTER_MONSTER = """
-<!-- Curly braces let us inject values into the string -->
-You are in {}. You found a monster!<br>
-
-<!-- Image taken from site that generates random Corgi pictures-->
-<img src="http://placecorgi.com/260/180" /><br>
-    
-What is its name?
-
-<!-- Form allows you to have more text entry -->    
-<form action="/save/name/">
-    <input type="text" name="player"><br>
-    <input type="submit" value="Submit"><br>
-</form>
-"""
-
 
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:
@@ -44,32 +30,15 @@ def open_door(world: dict, where: str) -> str:
         return render_template("sorting_ceremony.html")
 
 @simple_route('/save/house/')
-def disclosing(world:dict, chosen_name:str):
+def disclosing_reasons(world:dict, chosen_name:str):
     return render_template("reasons_to_disclose.html")
 
 
-    """
-    Update the player location and encounter a monster, prompting the player
-    to give them a name.
+@simple_route('/disclosing/results/')
+def save_results(world:dict, *args)->str:
+    world["reasons_to_disclose"].append(request.values.get("reason1", False))
+    world["reasons_to_disclose"].append(request.values.get("reason2", False))
+    world["reasons_to_disclose"].append(request.values.get("reason3", False))
+    world["reasons_to_disclose"].append(request.values.get("reason4", False))
+    return render_template("reasons_response.html", world=world)
 
-    :param world: The current world
-    :param where: The new location to move to
-    :return: The HTML to show the player
-    """
-
-
-@simple_route("/save/house/")
-def save_name(world: dict, monsters_name: str) -> str:
-    """
-    Update the name of the monster.
-
-    :param world: The current world
-    :param monsters_name:
-    :return:
-    """
-    world['name'] = monsters_name
-
-    return GAME_HEADER + """You are in {where}, and you are nearby {monster_name}
-    <br><br>
-    <a href='/'>Return to the start</a>
-    """.format(where=world['location'], monster_name=world['name'])

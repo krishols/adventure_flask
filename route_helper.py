@@ -13,7 +13,9 @@ from flask import request, session, redirect
 
 from app import app
 
-INITIAL_WORLD = {}
+INITIAL_WORLD = {
+    "reasons_to_disclose": []
+}
 
 
 def simple_route(path: str, **options):
