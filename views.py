@@ -27,11 +27,11 @@ def open_door(world: dict, where: str) -> str:
     if where == "entrance":
         return "Congratulations! You're free!"
     elif where == "sorting_hat":
-        return render_template("sorting_ceremony.html")
+        return render_template("sorting_ceremony.html", world = world)
 
 @simple_route('/save/house/')
 def disclosing_reasons(world:dict, chosen_name:str):
-    return render_template("reasons_to_disclose.html")
+    return render_template("reasons_to_disclose.html", world = world)
 
 
 @simple_route('/disclosing/results/')
