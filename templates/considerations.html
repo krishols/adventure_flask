@@ -8,10 +8,17 @@
 <body>
 {% block body %}
 <p> {% if world["receiving_disclosure"][0]=="Close" %}
+    <table>
+    <tr>
+    <th> You are thinking of disclosing to someone close to you because...</th>
+    <th> Things to consider about this: </th>
+    </tr>
     {% for reason in world["reasons_to_disclose"] %}
         {% if reason == "Support" %}
-            You expressed interest in seeking support from someone you are close to. <br>
-            People tend to seek support by disclosing to those that they are close to, such as close friends or family members. When doing this, keep in mind the type of reaction or potential stigma the person you are disclosing to may have. <br> <br>
+           <tr>
+               <td> You are seeking support from someone you are close to. </td>
+               <td>People tend to seek support by disclosing to those that they are close to, such as close friends or family members. When doing this, keep in mind the type of reaction or potential stigma the person you are disclosing to may have. </td>
+           </tr>
         {% elif reason=="Honesty" %}
             You expressed interest in being honest about your obsession with someone you are close to.<br>
             People often want to be honest with people they are close to for various reasons. Sometimes, they want this person to know what's going on in their life. Other times, people have said that they want to share their story before someone else shares it. <br><br>
@@ -35,6 +42,7 @@
             Consider how close you are to the person if you do not feel comfortable sharing your private information. Remember that you do not have to share your experience if you are questioning the safety of your privacy or the trust you have for that person. <br> <br>
         {% endif %}
     {% endfor %}
+    </table>
     {% elif world["receiving_disclosure"][0]=="NotClose" %}
     {% for reason in world["reasons_to_disclose"] %}
         {% if reason == "Support" %}

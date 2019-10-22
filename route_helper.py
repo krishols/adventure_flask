@@ -51,6 +51,6 @@ def reset():
     the root page.
     :return: Redirection to '/'
     """
-    session['world'] = "{}"
+    session['world'] = json.dumps(INITIAL_WORLD)
     return redirect('/')
 
