@@ -1,0 +1,42 @@
+{% extends "parent_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block header %}
+<h3> Disclosure Survey   </h3>
+{% endblock %}
+<body>
+
+{% block body %}
+<form action="/disclosing/results/">
+   <h4> Who are you considering disclosing to? </h4> <select name = "person">
+            <option name="person1" value="Close">Someone close to me</option>
+            <option name="person2" value="NotClose">Someone not close to me</option>
+     </select>
+
+
+<br><h4> Check any of the following reasons you would like to disclose about your obsession. </h4>
+  <input type="checkbox" name="reason1" value="Support"> I want them to support my obsession.<br>
+  <input type="checkbox" name="reason2" value="Honesty"> I want to be honest about my obsession. <br>
+    <input type="checkbox" name="reason3" value="Amends"> I want to rekindle a relationship that my obsession ruined. <br>
+    <input type="checkbox" name="reason4" value="Example"> I want to set an example, to encourage sobriety and seeking treatment. <br>
+    <input type="checkbox" name="reason5" value="Logistics"> I need to disclose my obsession for logistical/record-keeping purposes. <br>
+
+<h4> Check any of the following reasons you would not like to disclose about your obsession. </h4>
+<input type="checkbox" name="_neg1" value="Judgment"> I am scared they will think worse of me. <br>
+    <input type="checkbox" name="neg2" value="Worry"> I don't want them to worry about me.<br>
+    <input type="checkbox" name="neg3" value="Privacy"> I don't want them knowing about my private life. <br>
+     <input type="submit" value="Continue"><br>
+
+
+
+
+
+</form>
+
+{% endblock %}
+</body>
+</html>
