@@ -7,72 +7,125 @@
 </head>
 <body>
 {% block body %}
-<p> {% if world["receiving_disclosure"][0]=="Close" %}
+<form action="/considerations/results/">
+    <p> {% if world["receiving_disclosure"][0]=="Close" %}
     <table>
+<style>
+table, th, td {border: 1px solid black;
+    border-collapse: collapse}
+</style>
     <tr>
-    <th> You are thinking of disclosing to someone close to you because...</th>
+    <th> You are thinking of disclosing to someone you are close to because...</th>
     <th> Things to consider about this: </th>
     </tr>
     {% for reason in world["reasons_to_disclose"] %}
         {% if reason == "Support" %}
            <tr>
-               <td> You are seeking support from someone you are close to. </td>
+               <td>You are seeking support. </td>
                <td>People tend to seek support by disclosing to those that they are close to, such as close friends or family members. When doing this, keep in mind the type of reaction or potential stigma the person you are disclosing to may have. </td>
            </tr>
         {% elif reason=="Honesty" %}
-            You expressed interest in being honest about your obsession with someone you are close to.<br>
-            People often want to be honest with people they are close to for various reasons. Sometimes, they want this person to know what's going on in their life. Other times, people have said that they want to share their story before someone else shares it. <br><br>
+           <tr>
+               <td>You want to be honest about your obsession.</td>
+               <td>People often want to be honest with people they are close to for various reasons. Sometimes, they want this person to know what's going on in their life. Other times, people have said that they want to share their story before someone else shares it. </td>
+           </tr>
         {% elif reason=="Amends" %}
-            You expressed interest in making amends with someone you are close to.<br>
-            People disclose to someone they are close to because they want to acknowledge what happened and fix their relationship. Some people have emphasized that it is important to keep in mind that making amends is not always successful, and you should wait to be in a place where you could handle this rejection. <br> <br>
+            <tr>
+                <td>You want to make amends.</td>
+                <td> People disclose to someone they are close to because they want to acknowledge what happened and fix their relationship. Some people have emphasized that it is important to keep in mind that making amends is not always successful, and you should wait to be in a place where you could handle this rejection. </td>
+            </tr>
         {% elif reason=="Example" %}
-            You expressed interest in setting an example for someone you are close to.<br>
-            People often disclose their obsession in order to set an example to people such as family members, partners, or close friends. They think they experience could help prevent people from making the same harmful decisions.
+           <tr>
+               <td>You want to set an example.</td>
+               <td>People often disclose their obsession in order to set an example to people such as family members, partners, or close friends. They think they experience could help prevent people from making the same harmful decisions.</td>
+           </tr>
         {% elif reason =="Logistics" %}
-            You expressed interest in disclosing to someone you are close to for logistical purposes. <br>
-            People will disclose their obsession to someone if it needs to be recorded for documents such as insurance. <br>
+           <br>
+               <td>Of logistical purposes.</td>
+                <td>People will disclose their obsession to someone if it needs to be recorded for documents such as insurance. </td>
+           </tr>
         {% elif reason=="Judgment" %}
-            You expressed concern of being judged when disclosing to someone you are close to. <br>
-            People choose not to disclose if they fear the person they are close to holds harmful stigma regarding Harry Potter obsessions. Sometimes they know that no matter how they share their experience, it will only result in their negative perspective. When this is the case, it is okay to choose not to disclose. <br> <br>
+            <tr>
+                <td>You are concerned about being judged.</td>
+                <td>People choose not to disclose if they fear the person they are close to holds harmful stigma regarding Harry Potter obsessions. Sometimes they know that no matter how they share their experience, it will only result in their negative perspective. When this is the case, it is okay to choose not to disclose. </td>
+            </tr>
         {% elif reason=="Worry" %}
-            You expressed concern of worrying someone you are close to. <br>
-            People may be hesitant to disclose because they do not want someone to be more concerned about them. <br> <br>
+           <tr>
+            <td>You don't want to worry them.</td>
+            <td>People may be hesitant to disclose because they do not want someone to be more concerned about them. </td>
         {% elif reason == "Privacy" %}
-            You expressed privacy concerns about someone you are close to. <br>
-            Consider how close you are to the person if you do not feel comfortable sharing your private information. Remember that you do not have to share your experience if you are questioning the safety of your privacy or the trust you have for that person. <br> <br>
+           <tr>
+            <td>You are worried about protecting your privacy.</td>
+            <td>Consider how close you are to the person if you do not feel comfortable sharing your private information. Remember that you do not have to share your experience if you are questioning the safety of your privacy or the trust you have for that person. </td>
+           </tr>
         {% endif %}
     {% endfor %}
     </table>
+
     {% elif world["receiving_disclosure"][0]=="NotClose" %}
+    <table>
+<style>
+table, th, td {border: 1px solid black;
+    border-collapse: collapse}
+</style>
+    <tr>
+    <th> You are thinking of disclosing to someone you are not close to because...</th>
+    <th> Things to consider about this: </th>
+    </tr>
     {% for reason in world["reasons_to_disclose"] %}
         {% if reason == "Support" %}
-            You expressed interest in seeking support from someone you are not close to.<br>
-            People tend not to seek support from those they are not close to. Support is usually provided by someone who you are comfortable sharing an emotional connection with. <br><br>
+            <tr>
+                <td>You are seeking support.</td>
+                <td>People tend not to seek support from those they are not close to. Support is usually provided by someone who you are comfortable sharing an emotional connection with. </td>
+            </tr>
         {% elif reason == "Honesty" %}
-            You expressed interest in being honest with someone you are not close to.<br>
-            While honesty can be good, people have reported that it is not necessary to be completely honest with people who do not necessarily need all of the information regarding an obsession. Many people choose to keep some details to themselves when disclosing information to their teachers, employers, etc.<br><br>
+            <tr>
+                <td>You want to be honest about your obsession.</td>
+                <td>While honesty can be good, people have reported that it is not necessary to be completely honest with people who do not necessarily need all of the information regarding an obsession. Many people choose to keep some details to themselves when disclosing information to their teachers, employers, etc.</td>
+            </tr>
         {% elif reason == "Amends" %}
-            You expressed interest in making amends with someone you are not close to.
-            People may try to make amends with someone they are no longer close to because their obsession hindered their relationship. Otherwise, if your relationship was never a close one, consider if it is a relationship worth disclosing information to in order to fix it. <br><br>
+            <tr>
+                <td>You want to make amends.</td>
+                <td>People may try to make amends with someone they are no longer close to because their obsession hindered their relationship. Otherwise, if your relationship was never a close one, consider if it is a relationship worth disclosing information to in order to fix it. </td>
+            </tr>
         {% elif reason=="Example" %}
-            You expressed interest in setting an example for someone you are not close to. <br>
-            Consider whether you feel comfortable disclosing this information with someone you do not know well. While being an example is admirable, consider how much of an impact you will have on someone you do not know well. <br> <br>
+            <tr>
+                <td>You want to set an example.</td>
+                <td>Consider whether you feel comfortable disclosing this information with someone you do not know well. While being an example is admirable, consider how much of an impact you will have on someone you do not know well. </td>
+            </tr>
         {% elif reason=="Logistics" %}
-            You expressed interest in disclosing to someone you are not close to for logistical purposes. <br>
-            People tend to disclose about their obsession when they need accommodations or support from their employer, teacher, etc. Keep in mind that when this is the case, you do not necessarily need to share all the details of your obsession. <br> <br>
+            <tr>
+                <td>Of logistical purposes. </td>
+                <td>People tend to disclose about their obsession when they need accommodations or support from their employer, teacher, etc. Keep in mind that when this is the case, you do not necessarily need to share all the details of your obsession. </td>
+            </tr>
         {% elif reason=="Judgment" %}
-            You expressed concern of being judged by someone you are not close to.<br>
-            People choose not to disclose about their obsession if they do not know a person well enough and do not want to risk receiving a negative/stigmatized reaction. People may also choose not to disclose about their obsession if there is a potential threat of discrimination. <br> <br>
+            <tr>
+                <td>You are concerned about being judged.</td>
+                <td>People choose not to disclose about their obsession if they do not know a person well enough and do not want to risk receiving a negative/stigmatized reaction. People may also choose not to disclose about their obsession if there is a potential threat of discrimination. </td>
+            </tr>
         {% elif reason=="Worry" %}
-            You expressed concern of worrying someone you are not close to. <br>
-            People choose not to disclose to someone they are not close to because the relationship is not personal enough to evoke that worry or concern from someone. <br> <br>
+           <tr>
+            <td>You don't want to worry them.</td>
+            <td>People choose not to disclose to someone they are not close to because the relationship is not personal enough to evoke that worry or concern from someone. </td>
+           </tr>
         {%  elif reason=="Privacy" %}
-            You expressed privacy concerns about someone you are not close to. <br>
-            Keep in mind that you are entitled to your privacy and are not obligated to share your experiences with people if you do not feel comfortable, do not trust, or simply do not want to disclose your information to them. <br> <br>
+            <tr>
+                <td>You are worried about protecting your privacy.</td>
+                <td>Keep in mind that you are entitled to your privacy and are not obligated to share your experiences with people if you do not feel comfortable, do not trust, or simply do not want to disclose your information to them. </td>
+            </tr>
         {% endif %}
     {% endfor %}
+    </table>
 
     {% endif %}</p>
+<h6> Take some time to consider our feedback. When you have decided whether or not it is in your best interest to disclose to someone about your obsession, answer the following question to continue. Remember that you can return to this guide whenever you would like. </h6>
+Do you want to disclose to someone about your obsession?
+  <select name = "disclosing_result">
+        <option value="Yes">Yes, I want to continue with the disclosing process.</option>
+            <option value="No">No, I do not want to continue with the disclosing process right now. </option>
+  </select>
+    <input type="submit" value="Continue"><br>
+    </form>
 {% endblock %}
 </body>
 

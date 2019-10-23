@@ -14,8 +14,10 @@ from flask import request, session, redirect
 from app import app
 
 INITIAL_WORLD = {
+    "house": [],
     "reasons_to_disclose": [],
     "receiving_disclosure": []
+    "considerations_results": []
 }
 
 
