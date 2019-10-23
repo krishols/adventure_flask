@@ -45,7 +45,6 @@ def results_subject(world:dict, *args)->str:
     world["reasons_to_disclose"].append(request.values.get("reason2", False))
     world["reasons_to_disclose"].append(request.values.get("reason3", False))
     world["reasons_to_disclose"].append(request.values.get("reason4", False))
-    world["reasons_to_disclose"].append(request.values.get("reason5", False))
     world["reasons_to_disclose"].append(request.values.get("neg1", False))
     world["reasons_to_disclose"].append(request.values.get("neg2", False))
     world["reasons_to_disclose"].append(request.values.get("neg3", False))
