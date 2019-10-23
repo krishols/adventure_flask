@@ -1,10 +1,50 @@
+{% extends "parent_layout.html"%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+{% block header %}
+<h3>
+Thank you for completing the Harry Potter Decision Aide.
+</h3>
+{% endblock %}
+{% block body %}
 <body>
+{% if world["considerations_results"][0]=="Yes" %}
+    {% if world["house"][0]=="Gryffindor" %}
+         <img src="/static/gryffindor_yes.jpg" style="width:250px;height:300px"/><br>
+        Good luck with disclosing and keep our considerations in mind!
+    {% elif world["house"][0]=="Hufflepuff" %}
+        <img src="/static/hufflepuff_yes.jpg" style="width:250px;height:300px"/> <br>
+        Good luck with disclosing and keep our considerations in mind!
+    {% elif world["house"][0]=="Ravenclaw" %}
+        <img src="/static/ravenclaw_yes.jpg" style="width:250px; height:300px"/> <br>
+        Good luck with disclosing and keep our considerations in mind!
+    {% elif world["house"][0]=="Slytherin" %}
+        <img src="/static/slytherin_yes.jpg" style="width:250px; height:300px"/> <br>
+        Good luck with disclosing and keep our considerations in mind!
+    {% endif %}
+{% elif world["considerations_results"][0]=="No" %}
+{% if world["house"][0]=="Gryffindor" %}
+    <img src="/static/gryffindor_no.png" style="width:250px;height:300px"/><br>
+    Move at your own pace and never disclose until you are confident in your decision. You can always come back and retake this decision aide at any time.
+    {% elif world["house"][0]=="Hufflepuff" %}
+    <img src="/static/hufflepuff_no.jpg" style="width:300px; height:250px"/> <br>
+    Move at your own pace and never disclose until you are confident in your decision. You can always come back and retake this decision aide at any time.
+    {% elif world["house"][0]=="Ravenclaw" %}
+    <img src="/static/ravenclaw_no.png" style="width:300px;height:250px"/> <br>
+    Move at your own pace and never disclose until you are confident in your decision. You can always come back and retake this decision aide at any time.
+    {% elif world["house"][0]=="Slytherin" %}
+    <img src="/static/slytherin_no.jpg" style="widht:250px;height:300px"/> <br>
+    Move at your own pace and never disclose until you are confident in your decision. You can always come back and retake this decision aide at any time.
+    {% endif %}
+{% endif %}
+
+{% endblock %}
+
 
 </body>
+
 </html>

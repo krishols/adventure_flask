@@ -16,7 +16,7 @@ from app import app
 INITIAL_WORLD = {
     "house": [],
     "reasons_to_disclose": [],
-    "receiving_disclosure": []
+    "receiving_disclosure": [],
     "considerations_results": []
 }
 
