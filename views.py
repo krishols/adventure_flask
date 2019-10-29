@@ -31,7 +31,7 @@ def open_door(world: dict, where: str) -> str:
 
 @simple_route('/save/house/')
 def disclosing_reasons(world:dict, chosen_name:str):
-    world["house"].append(request.values.get("houses"))
+    world["house"]=request.values.get("houses")
     return render_template("survey.html", world = world)
 
 
@@ -49,9 +49,9 @@ def results_subject(world:dict, *args)->str:
     world["reasons_to_disclose"].append(request.values.get("neg2", False))
     world["reasons_to_disclose"].append(request.values.get("neg3", False))
     world["receiving_disclosure"].append(request.values.get("person"))
-    return render_template("considerations.html", world=world)
+    return render_template("considerations_parent_layout.html", world=world)
 
 @simple_route('/considerations/results/')
 def consideration_results(world:dict, *args): 
-    world["considerations_results"].append(request.values.get("disclosing_result"))
+    world["considerations_results"]=(request.values.get("disclosing_result"))
     return render_template("considerations_results.html", world=world)
