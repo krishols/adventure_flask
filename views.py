@@ -32,7 +32,15 @@ def open_door(world: dict, where: str) -> str:
 @simple_route('/save/house/')
 def disclosing_reasons(world:dict, chosen_name:str):
     world["house"]=request.values.get("houses")
-    return render_template("survey.html", world = world)
+    if world["house"]=="Gryffindor":
+        return render_template("gryffindor_survey.html", world=world)
+    elif world["house"]=="Hufflepuff":
+        return render_template("hufflepuff_survey.html", world=world)
+    elif world["house"]=="Ravenclaw":
+        return render_template("ravenclaw_survey.html", world=world)
+    elif world["house"]=="Slytherin":
+        return render_template("slytherin_survey.html", world=world)
+
 
 
 @simple_route('/disclosing/results/')
@@ -48,8 +56,38 @@ def results_subject(world:dict, *args)->str:
     world["reasons_to_disclose"].append(request.values.get("neg1", False))
     world["reasons_to_disclose"].append(request.values.get("neg2", False))
     world["reasons_to_disclose"].append(request.values.get("neg3", False))
-    world["receiving_disclosure"].append(request.values.get("person"))
-    return render_template("considerations_parent_layout.html", world=world)
+    world["receiving_disclosure"]=request.values.get("person")
+    if world["house"]=="Gryffindor":
+        world["gryffindor_traits"].append(request.values.get("Gtrait1",False))
+        world["gryffindor_traits"].append(request.values.get("Gtrait2", False))
+        world["gryffindor_traits"].append(request.values.get("Gtrait3", False))
+        world["gryffindor_traits"].append(request.values.get("Gtrait4", False))
+        world["gryffindor_traits"].append(request.values.get("Gtrait5", False))
+        return render_template("gryffindor_considerations.html", world=world)
+    elif world["house"]=="Hufflepuff":
+        world["hufflepuff_traits"].append(request.values.get("Htrait1", False))
+        world["hufflepuff_traits"].append(request.values.get("Htrait2", False))
+        world["hufflepuff_traits"].append(request.values.get("Htrait3", False))
+        world["hufflepuff_traits"].append(request.values.get("Htrait4", False))
+        world["hufflepuff_traits"].append(request.values.get("Htrait5", False))
+        return render_template("hufflepuff_considerations.html", world=world)
+    elif world["house"]=="Ravenclaw":
+        world["ravenclaw_traits"].append(request.values.get("Rtrait1", False))
+        world["ravenclaw_traits"].append(request.values.get("Rtrait2", False))
+        world["ravenclaw_traits"].append(request.values.get("Rtrait3", False))
+        world["ravenclaw_traits"].append(request.values.get("Rtrait4", False))
+        world["ravenclaw_traits"].append(request.values.get("Rtrait5", False))
+        return render_template("ravenclaw_considerations.html", world=world)
+    elif world["house"]=="Slytherin":
+        world["slytherin_traits"].append(request.values.get("Strait1", False))
+        world["slytherin_traits"].append(request.values.get("Strait2", False))
+        world["slytherin_traits"].append(request.values.get("Strait3", False))
+        world["slytherin_traits"].append(request.values.get("Strait4", False))
+        world["slytherin_traits"].append(request.values.get("Strait5", False))
+        return render_template("slytherin_considerations.html", world=world)
+
+
+
 
 @simple_route('/considerations/results/')
 def consideration_results(world:dict, *args): 

@@ -17,7 +17,11 @@ INITIAL_WORLD = {
     "house":"",
     "reasons_to_disclose": [],
     "receiving_disclosure": "",
-    "considerations_results": ""
+    "considerations_results": "",
+    "gryffindor_traits": [],
+    "hufflepuff_traits": [],
+    "ravenclaw_traits": [],
+    "slytherin_traits": []
 }
 
 
