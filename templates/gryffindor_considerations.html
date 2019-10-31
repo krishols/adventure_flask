@@ -5,15 +5,42 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
 {% block body %}
-      <table class="table">
+  <table class="table">
     <tr>
-    <th> Of the Hufflepuff house, you are...</th>
-    <th> How this can affect your disclosing process: </th>
-
+    <th> Of the Gryffindor house, you are...</th>
+    <th> How this may affect your disclosure process: </th>
     </tr>
-      </table>
+{% if world["gryffindor_traits"][0]=="Brave" %}
+    <tr>
+        <td>Brave </td>
+        <td>Use your confidence and bravery to your advantage. Have faith in yourself and whatever decision you make. </td>
+    </tr>
+{% endif %}
+{% if world["gryffindor_traits"][1]=="Independent" %}
+    <tr>
+        <td>Independent </td>
+        <td> Even though you may be self-sufficient, there is no reason to feel shame for seeking support from others. It is okay to share parts of your life with others if you are comfortable with it. </td>
+    </tr>
+{% endif %}
+{% if world["gryffindor_traits"][2]=="Defend" %}
+    <tr>
+        <td>Defensive </td>
+        <td>Regardless of what you believe is right, while you disclose you will have to acknowledge dissenting opinions. Try to be open-minded and consider other people's perspectives.  </td>
+    </tr>
+{% endif %}
+{% if world["gryffindor_traits"][3]=="Reckless" %}
+    <tr>
+        <td>Reckless </td>
+        <td>Don't act without thinking first, regardless of what your gut may tell you. Think it through and don't make rash decisions.   </td>
+    </tr>
+{% endif %}
+{% if world["gryffindor_traits"][4]=="Arrogant" %}
+    <tr>
+        <td>Arrogant </td>
+        <td>Don't approach disclosing with a pompous attitude. Try to be humble and honest. </td>
+    </tr>
+{% endif %}
 {% endblock %}
-</body>
+    </body>
 </html>

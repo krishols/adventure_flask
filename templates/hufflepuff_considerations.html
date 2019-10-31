@@ -6,6 +6,42 @@
     <title>Title</title>
 </head>
 <body>
-
-</body>
+{% block body %}
+  <table class="table">
+    <tr>
+    <th> Of the Hufflepuff house, you are...</th>
+    <th> How this may affect your disclosure process: </th>
+    </tr>
+{% if world["hufflepuff_traits"][0]=="Loyalty" %}
+    <tr>
+        <td>Loyal </td>
+        <td>You may feel an obligation to disclose to others simply because you value them. Remember that your obsession is completely your own and regardless of your loyalty, you do not owe anybody anything. However, if you are in a comfortable and confident place to disclose to someone you trust, then it may be a good decision to make for yourself. </td>
+    </tr>
+{% endif %}
+{% if world["hufflepuff_traits"][1]=="Kind" %}
+    <tr>
+        <td>Kind </td>
+        <td>You may feel obligated to remain kind and courteous during disclosure even if you face a negative reaction. Remember that you do not owe anybody anything. You do not have to continue disclosing to someone if they have a negative reaction towards you.  </td>
+    </tr>
+{% endif %}
+{% if world["hufflepuff_traits"][2]=="Sociable" %}
+    <tr>
+        <td>Sociable </td>
+        <td>You may be able to use your social skills to your advantage during disclosure. Being able to read a social scenario will allow you to anticipate someone's reaction and troubleshoot how to approach the situation. </td>
+    </tr>
+{% endif %}
+{% if world["hufflepuff_traits"][3]=="Passive" %}
+    <tr>
+        <td>Passive </td>
+        <td>Your kindness can sometimes be taken advantage of, allowing people to step on your toes. Do not let someone take advantage of your passivity and force you into disclosing more than you are comfortable disclosing.  </td>
+    </tr>
+{% endif %}
+{% if world["hufflepuff_traits"][4]=="Lonely" %}
+    <tr>
+        <td>Lonely </td>
+        <td>Despite being sociable, you may feel lonely in a larger context. Do not let this convince you to disclose simply because you want to form social connections. There are ways to connect with people without disclosing more than you are comfortable with. </td>
+    </tr>
+{% endif %}
+{% endblock %}
+    </body>
 </html>

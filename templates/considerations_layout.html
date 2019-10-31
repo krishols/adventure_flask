@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+
 <form action="/considerations/results/">
     <p> {% if world["receiving_disclosure"]=="Close" %}
     <table class="table">
@@ -113,8 +113,12 @@ table, th, td {border: 1px solid black;
     </table>
 
     {% endif %}</p>
+<body>
 {% block body %}
 {% endblock %}
+</body>
+
+<br>
 
  {{ world["total"] }}
 {% if world["total"]<0 %}
@@ -133,7 +137,8 @@ Do you want to disclose to someone about your obsession?</h5>
     <input type="submit" value="Continue"><br>
     </form>
 
-</body>
+
 
 </html>
+
 </center>

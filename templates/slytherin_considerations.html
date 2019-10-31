@@ -6,6 +6,44 @@
     <title>Title</title>
 </head>
 <body>
-
+{% block body %}
+  <table class="table">
+    <tr>
+    <th> Of the Slytherin house, you are...</th>
+    <th> How this may affect your disclosure process: </th>
+    </tr>
+{% if world["slytherin_traits"][0]=="Ambitious" %}
+    <tr>
+        <td>Ambitious </td>
+        <td>Use your ambition to successfully plan your disclosure. Use your confidence to your advantage. </td>
+    </tr>
+{% endif %}
+{% if world["slytherin_traits"][1]=="Perseverant" %}
+    <tr>
+        <td>Perseverant </td>
+        <td> It may take more than one conversation to successfully communicate your obsession with someone. Use your perseverance to continue through the difficult conversations you may have.  </td>
+    </tr>
+{% endif %}
+{% if world["slytherin_traits"][2]=="Opportunistic" %}
+    <tr>
+        <td>Opportunistic </td>
+        <td>Being opportunistic may allow you to intelligently read an environment and determine when the best time to disclose is. </td>
+    </tr>
+{% endif %}
+{% if world["slytherin_traits"][3]=="Manipulative" %}
+    <tr>
+        <td>Manipulative </td>
+        <td>Don't resort to manipulation to convince others that your obsession is healthy. Be honest and forthcoming while respecting your own boundaries.   </td>
+    </tr>
+{% endif %}
+{% if world["slytherin_traits"][4]=="Selfish" %}
+    <tr>
+        <td>Selfish </td>
+        <td>Don't approach disclosing with a self-centered attitude. Try to be humble and considerate of others. </td>
+    </tr>
+{% endif %}
+{% endblock %}
+    </body>
+</html>
 </body>
 </html>

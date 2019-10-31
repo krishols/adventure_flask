@@ -6,6 +6,44 @@
     <title>Title</title>
 </head>
 <body>
-
+{% block body %}
+  <table class="table">
+    <tr>
+    <th> Of the Ravenclaw house, you are...</th>
+    <th> How this may affect your disclosure process: </th>
+    </tr>
+{% if world["ravenclaw_traits"][0]=="Creative" %}
+    <tr>
+        <td>Creative </td>
+        <td>Use your creativity to determine the best and most efficient approach to disclosing.. </td>
+    </tr>
+{% endif %}
+{% if world["ravenclaw_traits"][1]=="Witty" %}
+    <tr>
+        <td>Witty </td>
+        <td> You may be able to use your wit to read a social setting. However, do not let your wit offend or upset anyone you are disclosing to. </td>
+    </tr>
+{% endif %}
+{% if world["ravenclaw_traits"][2]=="Passionate" %}
+    <tr>
+        <td>Passionate </td>
+        <td>Don't let your intense emotions shade your rationality. </td>
+    </tr>
+{% endif %}
+{% if world["ravenclaw_traits"][3]=="Antisocial" %}
+    <tr>
+        <td>Antisocial </td>
+        <td>Despite not always feeling a need to socialize, sometimes it can be helpful to seek support and help from others. </td>
+    </tr>
+{% endif %}
+{% if world["ravenclaw_traits"][4]=="Arrogant" %}
+    <tr>
+        <td>Arrogant </td>
+        <td>Don't approach disclosing with a pompous attitude. Try to be humble and honest. </td>
+    </tr>
+{% endif %}
+{% endblock %}
+    </body>
+</html>
 </body>
 </html>
