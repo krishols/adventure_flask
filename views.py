@@ -41,7 +41,15 @@ def disclosing_reasons(world:dict, chosen_name:str):
     elif world["house"]=="Slytherin":
         return render_template("slytherin_survey.html", world=world)
 
-
+def calculating_result()->int:
+    for reason in reasons:
+        total=0
+        if reason in reasons[:4]:
+            total+=1
+            return total
+        elif reason in reasons[4:]:
+            total-=1
+            return total
 
 @simple_route('/disclosing/results/')
 def results_subject(world:dict, *args)->str:
@@ -49,14 +57,22 @@ def results_subject(world:dict, *args)->str:
 
     :type world: dict
     """
+
     world["reasons_to_disclose"].append(request.values.get("reason1", False))
     world["reasons_to_disclose"].append(request.values.get("reason2", False))
     world["reasons_to_disclose"].append(request.values.get("reason3", False))
     world["reasons_to_disclose"].append(request.values.get("reason4", False))
-    world["reasons_to_disclose"].append(request.values.get("neg1", False))
-    world["reasons_to_disclose"].append(request.values.get("neg2", False))
-    world["reasons_to_disclose"].append(request.values.get("neg3", False))
+    world["reasons_not_to_disclose"].append(request.values.get("neg1", False))
+    world["reasons_not_to_disclose"].append(request.values.get("neg2", False))
+    world["reasons_not_to_disclose"].append(request.values.get("neg3", False))
     world["receiving_disclosure"]=request.values.get("person")
+    for reason in world["reasons_to_disclose"]:
+        if reason != False:
+            world["total"]+=1
+    for reason in world["reasons_not_to_disclose"]:
+        if reason != False:
+            world["total"]-=1
+
     if world["house"]=="Gryffindor":
         world["gryffindor_traits"].append(request.values.get("Gtrait1",False))
         world["gryffindor_traits"].append(request.values.get("Gtrait2", False))

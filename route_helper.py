@@ -16,12 +16,14 @@ from app import app
 INITIAL_WORLD = {
     "house":"",
     "reasons_to_disclose": [],
+    "reasons_not_to_disclose":[],
     "receiving_disclosure": "",
     "considerations_results": "",
     "gryffindor_traits": [],
     "hufflepuff_traits": [],
     "ravenclaw_traits": [],
-    "slytherin_traits": []
+    "slytherin_traits": [],
+    "total": 0
 }
 
 
