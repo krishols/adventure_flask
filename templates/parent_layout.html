@@ -4,17 +4,27 @@
 <center>
 
 <head>
-</head>
-
 <h1>Harry Potter Obsession Decision Aid</h1>
+
 <p>At any time you can <a href='/reset/'>reset</a> your survey.</p>
 
+<div id="header">
 {% block header %}
 {% endblock %}
-<body>
+</div>
+</head>
 
+<body>
+ <div id="body">
 {% block body %}
 {% endblock %}
+ </div>
+
 </body>
+
+<div id="footer">
+{% block footer %}
+{% endblock %}
+</div>
 </html>
 </center>

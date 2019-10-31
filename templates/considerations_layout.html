@@ -1,13 +1,13 @@
 
 {% include "parent_layout.html" %}
-<center>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 
+<br>
+<div id="header">
+{% block header %}
+{% endblock %}
+</div>
+<div id="body">
+{% block body %}
 <form action="/considerations/results/">
     <p> {% if world["receiving_disclosure"]=="Close" %}
     <table class="table">
@@ -59,11 +59,8 @@
     </table>
 
     {% elif world["receiving_disclosure"]=="NotClose" %}
-    <table>
-<style>
-table, th, td {border: 1px solid black;
-    border-collapse: collapse}
-</style>
+    <table class="table">
+
     <tr>
     <th> You are thinking of disclosing to someone you are not close to because...</th>
     <th> Things to consider about this: </th>
@@ -111,16 +108,13 @@ table, th, td {border: 1px solid black;
             </tr>
             {% endif %}
     </table>
-
     {% endif %}</p>
-<body>
-{% block body %}
 {% endblock %}
-</body>
+
 
 <br>
-
- {{ world["total"] }}
+<div id="footer">
+{% block footer %}
 {% if world["total"]<0 %}
     <h5> Overall, you seem to express more concern than readiness to disclose. We wouldn't recommend that you disclose at this point, but that choice is ultimately up to you!</h5>
 {% elif world["total"]>0 %}
@@ -130,15 +124,13 @@ table, th, td {border: 1px solid black;
 {% endif %}
 <h5> Take some time to consider our feedback. When you have decided whether or not it is in your best interest to disclose to someone about your obsession, answer the following question to continue. Remember that you can return to this guide whenever you would like. </h5>
 Do you want to disclose to someone about your obsession?</h5>
-  <select name = "disclosing_result">
-        <option value="Yes">Yes, I want to continue with the disclosing process.</option>
-            <option value="No">No, I do not want to continue with the disclosing process right now. </option>
-  </select>
+
+    <form action="/consideration/results/"</form>
+        <select name = "disclosing_result">
+              <option value="Yes">Yes, I want to continue with the disclosing process.</option>
+              <option value="No">No, I do not want to continue with the disclosing process right now. </option>
+        </select>
+
     <input type="submit" value="Continue"><br>
-    </form>
-
-
-
-</html>
-
-</center>
+{% endblock %}
+</div>

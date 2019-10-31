@@ -9,7 +9,7 @@ GAME_HEADER = """
 <p>At any time you can <a href='/reset/'>reset</a> your game.</p>
 """
 
-
+"""asks user if they are ready to disclose their Harry Potter obsession"""
 @simple_route('/')
 def hello(world: dict) -> str:
     """
@@ -21,14 +21,15 @@ def hello(world: dict) -> str:
     return render_template("index.html")
 
 
-
+"""if users do not want to disclose it exits tem from the survey. if user wnats to disclose it takes them to the sorting ceremony"""
 @simple_route('/goto/<where>/')
 def open_door(world: dict, where: str) -> str:
     if where == "entrance":
-        return "Congratulations! You're free!"
+        return render_template("exit.html")
     elif where == "sorting_hat":
         return render_template("sorting_ceremony.html", world = world)
 
+"""asks user what house they are in and stores in world dictionary"""
 @simple_route('/save/house/')
 def disclosing_reasons(world:dict, chosen_name:str):
     world["house"]=request.values.get("houses")
@@ -41,16 +42,10 @@ def disclosing_reasons(world:dict, chosen_name:str):
     elif world["house"]=="Slytherin":
         return render_template("slytherin_survey.html", world=world)
 
-def calculating_result()->int:
-    for reason in reasons:
-        total=0
-        if reason in reasons[:4]:
-            total+=1
-            return total
-        elif reason in reasons[4:]:
-            total-=1
-            return total
 
+"""stores survey results in respective lists in the world dictionary. also calculates the total positive results (adds one) and the negative results (subtracts one). if the
+value is positive, it recommends disclosure. if the value is negative, it does not recommend disclosure. if it is 0, it cannot offer guidance. saves the user's respective
+house traits and returns the survey considerations based on their survey answers."""
 @simple_route('/disclosing/results/')
 def results_subject(world:dict, *args)->str:
     """
@@ -104,7 +99,7 @@ def results_subject(world:dict, *args)->str:
 
 
 
-
+"""asks user if they want to disclose or not and takes them to a respective endscreen."""
 @simple_route('/considerations/results/')
 def consideration_results(world:dict, *args): 
     world["considerations_results"]=(request.values.get("disclosing_result"))
